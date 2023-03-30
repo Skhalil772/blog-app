@@ -4,46 +4,72 @@ import Image from "next/image";
 import Navbar from "./Navbar";
 import Postitem from "./Postitem";
 import Relatedpost from "./Relatedpost";
+const parse = require("html-react-parser");
+// import { formatDate } from "../../components/utils";
 
 function Mainpost({ data }) {
-	console.log(data);
-	const strg =
-		"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beatae Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beatae Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beataeLorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias cumrerum vitae dolore dignissimos accusamus totam quam beatae";
-	function WordCount(str) {
-		return str.split(" ").length;
+	function formatDate(dateStr) {
+		const date = new Date(dateStr);
+		const options = { weekday: "long", month: "long", day: "numeric" };
+		const formattedDate = date.toLocaleDateString("en-US", options);
+		const suffix = getOrdinalSuffix(date.getDate());
+		const year = date.getFullYear();
+		return `${formattedDate}${suffix} ${year}`;
 	}
-	const number = WordCount(strg);
-	const mins = Math.ceil(number / 200);
+
+	function getOrdinalSuffix(date) {
+		if (date > 3 && date < 21) return "th";
+		switch (date % 10) {
+			case 1:
+				return "st";
+			case 2:
+				return "nd";
+			case 3:
+				return "rd";
+			default:
+				return "th";
+		}
+	}
+	const strg = data.post.content;
+	const date = formatDate(data.post.date);
+	console.log(date);
+	// function WordCount(str) {
+	// 	return str.split(" ").length;
+	// }
+	// const number = WordCount(strg);
+	// const mins = Math.ceil(number / 200);
+	const mins = 7;
+
 	return (
 		<>
 			<Navbar />
 			<main className="  mx-auto px-8 flex md:flex-row flex-col justify-between relative">
 				<section className="md:w-[65%] mt-20">
 					<div className="flex flex-col space-y-6">
-						<h2 className="font-semibold">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-							Molestias cum rerum vitae dolore dignissimos accusamus totam quam
-							beatae ipsum! Quia!
-						</h2>
+						<h2 className="font-semibold">{data.post.title}</h2>
 						<div className="flex space-x-4 xs:font-medium text-xs xs:text-sm sm:text-lg">
-							<span>September 30,2022</span>
+							<span>{date}</span>
 							<span>|</span>
 							<span className="flex items-center space-x-2">
 								<AiOutlineClockCircle />
 								<span> {`${mins} Mins Read`}</span>
 							</span>
 							<span>|</span>
-							<span>Written by Hussy</span>
+							<span className="capitalize">Written by {data.post.user}</span>
 						</div>
-						<div className="relative h-60 md:h-80 md:w-[70%]">
+
+						<div
+							className="relative w-full h-0"
+							style={{ paddingBottom: "56.25%" }}>
 							<Image
-								className="rounded-2xl"
-								src="https://images.unsplash.com/photo-1677350840467-8ddd90f2141d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-								alt="Blog image"
+								src={data.post.image}
+								alt="Description of the image"
 								fill
+								cover
+								className="flex justify-center"
 							/>
 						</div>
-						<p>{strg}</p>
+						<div>{parse(strg)}</div>
 					</div>
 				</section>
 				<section className="md:w-[30%] sticky top-20 flex flex-col gap-8 w-full md:mt-20 ">
@@ -51,6 +77,7 @@ function Mainpost({ data }) {
 					<Relatedpost />
 					<Relatedpost />
 					<Relatedpost />
+					<p></p>
 				</section>
 			</main>
 		</>
