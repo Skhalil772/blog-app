@@ -16,7 +16,7 @@ import Image from "next/image";
 
 export default function Home({ posts }) {
 	const [text, setText] = useState("");
-	console.log(posts);
+	// console.log(posts);
 	const url = `http://localhost:3000/posts/search?q=${text}`;
 	return (
 		<>
