@@ -9,12 +9,15 @@ function Createpost() {
 	const date = new Date().toJSON().slice(0, 10);
 
 	const [Load, setLoad] = useState(false);
-	const [Img, setImg] = useState("");
+	const [Img, setImg] = useState(null);
 	const [title, Settitle] = useState("");
 	const [categories, Setcategories] = useState("");
 	const [content, Setcontent] = useState("");
 	const [user, Setuser] = useState("khalil");
 	const [image, Setimage] = useState("");
+	const [UploadingImage, setUploadingImage] = useState(true);
+	const [UploadingPost, SetUploadingImagePost] = useState(true);
+
 	const Data = {
 		title,
 		categories,
@@ -27,18 +30,24 @@ function Createpost() {
 	const formData = new FormData();
 	formData.append("image", Img);
 	const Upload = () => {
+		setUploadingImage(true);
 		axios
 			.post("http://localhost:5000/api/v1/posts/uploads", formData)
 			.then((res) => {
+				setUploadingImage(false);
+
 				console.log(res.data.image);
 				Setimage(res.data.image);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				setUploadingImage(false);
+				console.log(err.response.data.msg);
+			});
 	};
 
 	const editorRef = useRef(null);
 
-	const Create = () => {
+	const CreatePost = () => {
 		if (editorRef.current) {
 			console.log(editorRef.current.getContent());
 			Setcontent(editorRef.current.getContent());
@@ -47,15 +56,21 @@ function Createpost() {
 		axios
 			.post("http://localhost:5000/api/v1/posts", Data)
 			.then((res) => console.log(res))
-			.catch((err) => console.log(err));
+			.catch((err) => console.log(err.response.data.msg));
+	};
+	const UploadBlogPost = () => {
+		Upload();
+		setTimeout(() => {
+			CreatePost();
+		}, 4000);
 	};
 
 	const op = `<ul>
 	<li style="text-align: center;"><span style="background-color: rgb(22, 145, 121);"><em>Loving <strong>this stuff of the editor.</strong></em></span></li>
 	</ul>`;
-	useEffect(() => {
-		Upload();
-	}, [Img]);
+	// useEffect(() => {
+	// 	Upload();
+	// }, [Img]);
 	// useEffect(() => {
 	// 	setTimeout(() => {
 	// 		setLoad(false);
@@ -158,12 +173,15 @@ function Createpost() {
 									htmlFor="multiple_files">
 									Upload multiple files
 								</label>
-								<input
-									onChange={(e) => setImg(e.target.files[0])}
-									className="block w-full text-sm text-white border border-gray-300 rounded-lg cursor-pointer  focus:outline-none bg-gray-600  dark:placeholder-gray-100"
-									id="multiple_files"
-									type="file"
-								/>
+								<div className="flex gap-3">
+									<input
+										onChange={(e) => setImg(e.target.files[0])}
+										className="block w-full text-sm text-white border border-gray-300 rounded-lg cursor-pointer  focus:outline-none bg-gray-600  dark:placeholder-gray-100"
+										id="multiple_files"
+										type="file"
+									/>
+									<>{UploadingImage && <p>loading</p>}</>
+								</div>
 							</div>
 							{image && (
 								<img
@@ -175,15 +193,11 @@ function Createpost() {
 						</div>
 					</section>
 
-					{/* <button
-						className="text-white bg-blue-600 max-w-xs flex justify-center w-full mt-8 mx-auto px-3 py-1 rounded-xl"
-						onClick={log}>
-						Submit
-					</button> */}
 					<button
-						className="text-white bg-blue-600 max-w-xs flex justify-center w-full mt-8 mx-auto px-3 py-1 rounded-xl"
-						onClick={Create}>
-						Upload
+						className="text-white bg-blue-600 max-w-xs flex gap-2 justify-center w-full mt-8 mx-auto px-3 py-1 rounded-xl"
+						onClick={UploadBlogPost}>
+						<span>Upload</span>
+						{UploadBlogPost && <span>Loading</span>}
 					</button>
 				</div>
 			)}
